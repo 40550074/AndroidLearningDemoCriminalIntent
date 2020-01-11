@@ -12,9 +12,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
 import java.util.UUID;
 
 import static android.widget.CompoundButton.*;
@@ -27,6 +29,8 @@ public class CrimeFragment extends Fragment {
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
+    private Button mJumpToFirstButton;
+    private Button mJumpToLastButton;
 
     public static CrimeFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
@@ -78,6 +82,40 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mCrime.setSolved(isChecked);
+            }
+        });
+
+        List<Crime> crimes = CrimeLab.get(getActivity()).getCrimes();
+
+        mJumpToFirstButton = (Button)v.findViewById(R.id.button_jump_to_first);
+        if (crimes.get(0).getId().equals(mCrime.getId())) {
+            mJumpToFirstButton.setEnabled(false);
+        } else {
+            mJumpToFirstButton.setEnabled(true);
+        }
+
+        mJumpToFirstButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getActivity() instanceof CrimeFragmentJumpPageListener) {
+                    ((CrimeFragmentJumpPageListener)getActivity()).jumpToFirstPage();
+                }
+            }
+        });
+
+        mJumpToLastButton = (Button)v.findViewById(R.id.button_jump_to_last);
+        if (crimes.get(CrimeLab.get(getActivity()).getCrimes().size() - 1).getId().equals(mCrime.getId())) {
+            mJumpToLastButton.setEnabled(false);
+        } else {
+            mJumpToLastButton.setEnabled(true);
+        }
+
+        mJumpToLastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getActivity() instanceof CrimeFragmentJumpPageListener) {
+                    ((CrimeFragmentJumpPageListener)getActivity()).jumpToLastPage();
+                }
             }
         });
 

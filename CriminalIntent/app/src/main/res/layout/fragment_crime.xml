@@ -34,4 +34,24 @@
         android:id="@+id/crime_solved"
         android:text="@string/crime_solved_label"/>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_jump_to_first"
+            android:text="@string/jump_to_first"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_jump_to_last"
+            android:text="@string/jump_to_last"/>
+    </LinearLayout>
+
+
 </LinearLayout>
