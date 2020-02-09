@@ -14,7 +14,7 @@ import android.os.Bundle;
 import java.util.List;
 import java.util.UUID;
 
-public class CrimePagerActivity extends AppCompatActivity implements CrimeFragmentJumpPageListener {
+public class CrimePagerActivity extends AppCompatActivity implements CrimeFragmentJumpPageListener, CrimeFragment.Callbacks {
 
     private static final String EXTRA_CRIME_ID = "com.example.criminalintent.crime_id";
 
@@ -58,6 +58,11 @@ public class CrimePagerActivity extends AppCompatActivity implements CrimeFragme
                 break;
             }
         }
+    }
+
+    @Override
+    public void onCrimeUpdated(Crime crime) {
+
     }
 
     // Implement CrimeFragmentJumpPageListener
