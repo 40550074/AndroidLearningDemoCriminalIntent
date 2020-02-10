@@ -4,6 +4,9 @@
     <string name="crime_title_label">标题</string>
     <string name="crime_details_label">明细</string>
     <string name="crime_solved_label">是否解决</string>
+    <string name="crime_photo_button_description">拍摄crime场景</string>
+    <string name="crime_photo_no_image_description">已设置crime场景图片</string>
+    <string name="crime_photo_image_description">未设置crime场景图片</string>
     <string name="jump_to_first">跳转到首条</string>
     <string name="jump_to_last">跳转到末条</string>
     <string name="date_picker_title">crime日期</string>
